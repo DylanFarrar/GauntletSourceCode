@@ -94,6 +94,7 @@ public class FpsController : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
 
+        //go back to the menu if the player falls off the map
         if (transform.position.y < deathHeight)
         {
             SceneManager.LoadScene(sceneName: "TitleScreen");

@@ -16,7 +16,9 @@ public class ProjectileShooter : MonoBehaviour
     
     void Start()
     {
+        //finds the seconds between shots
         fireRateInterval = 1 / (fireRate / 60);
+        //sets all variables to begin firing
         timeSinceLastShot = 0;
         lastShotTime = 0;
         currentTime = 0;
@@ -24,14 +26,17 @@ public class ProjectileShooter : MonoBehaviour
 
     private void Update() {
 
+        //
         currentTime += Time.deltaTime;
 
         timeSinceLastShot = currentTime - lastShotTime;
 
+        //checks if it is time to fire agian then checks for input
         if (fireRateInterval < timeSinceLastShot)
         {
             if (Input.GetMouseButton(0))
             {
+                //sets variables for the projectile
                 var position = transform.position + transform.forward;
                 Quaternion rotation = transform.rotation;
                 var projectile = Instantiate(projectilePrefab, position, rotation);

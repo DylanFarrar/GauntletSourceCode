@@ -15,14 +15,17 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        //makes the bullet despawn after a set time
         currentTime += Time.deltaTime;
         if (currentTime > despawnTime) {Destroy(gameObject);}
     }
 
+    //gets a reference to the rigidbody
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
     }
 
+    //sets bullets velocity
     public void Fire(float speed, Vector3 direction) {
         _rb.velocity = direction * speed;
     }
